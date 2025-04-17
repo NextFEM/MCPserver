@@ -41,12 +41,22 @@ mcp.tool()(refresh_after(nf.addTSection))
 mcp.tool()(refresh_after(nf.addDTSection))
 mcp.tool()(refresh_after(nf.addPlanarSection))
 # properties
-mcp.tool(name="selectedElements")(lambda: nf.selectedElements)
-mcp.tool(name="selectedNodes")(lambda: nf.selectedNodes)
-mcp.tool(name="elemsList")(lambda: nf.elemsList)
-mcp.tool(name="nodesList")(lambda: nf.nodesList)
-mcp.tool(name="materialsID")(lambda: nf.materialsID)
-mcp.tool(name="sectionsID")(lambda: nf.sectionsID)
+def get_selected_elements()->list:
+    return nf.selectedElements
+def set_selected_elements(elems:list):
+    nf.selectedElements = elems
+def get_selected_nodes()->list:
+    return nf.selectedNodes
+def set_selected_nodes(nodes:list):
+    nf.selectedNodes = nodes
+mcp.tool(name="selectedElements")(refresh_after(get_selected_elements))
+mcp.tool(name="selectElements")(refresh_after(set_selected_elements))
+mcp.tool(name="selectedNodes")(refresh_after(get_selected_nodes))
+mcp.tool(name="selectNodes")(refresh_after(set_selected_nodes))
+mcp.tool(name="elemsList")(refresh_after(lambda: nf.elemsList))
+mcp.tool(name="nodesList")(refresh_after(lambda: nf.nodesList))
+mcp.tool(name="materialsID")(refresh_after(lambda: nf.materialsID))
+mcp.tool(name="sectionsID")(refresh_after(lambda: nf.sectionsID))
 
 
 if __name__ == "__main__":
