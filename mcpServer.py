@@ -28,7 +28,7 @@ mcp.tool()(refresh_after(nf.addIsoMaterial))
 mcp.tool()(refresh_after(nf.assignSectionToElement))
 mcp.tool()(refresh_after(nf.assignMaterialToElement))
 mcp.tool()(refresh_after(nf.getNodeCoordinates))
-# rebar dimensionning for concrete members
+# rebar dimensioning for concrete members
 mcp.tool()(refresh_after(nf.addLongitRebar))
 mcp.tool()(refresh_after(nf.addDesignMatFromLib))
 mcp.tool()(refresh_after(nf.addStirrupBars))
@@ -53,10 +53,10 @@ mcp.tool(name="selectedElements")(refresh_after(get_selected_elements))
 mcp.tool(name="selectElements")(refresh_after(set_selected_elements))
 mcp.tool(name="selectedNodes")(refresh_after(get_selected_nodes))
 mcp.tool(name="selectNodes")(refresh_after(set_selected_nodes))
-mcp.tool(name="elemsList")(refresh_after(lambda: nf.elemsList))
-mcp.tool(name="nodesList")(refresh_after(lambda: nf.nodesList))
-mcp.tool(name="materialsID")(refresh_after(lambda: nf.materialsID))
-mcp.tool(name="sectionsID")(refresh_after(lambda: nf.sectionsID))
+mcp.tool(name="elemsList")((lambda: nf.elemsList))
+mcp.tool(name="nodesList")((lambda: nf.nodesList))
+mcp.tool(name="materialsID")((lambda: nf.materialsID))
+mcp.tool(name="sectionsID")((lambda: nf.sectionsID))
 
 
 if __name__ == "__main__":
